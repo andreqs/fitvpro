@@ -59,7 +59,9 @@ export function VideoSection() {
                   preload="metadata"
                   aria-label="Video introductorio del evento BodyScience 3D"
                 >
+                  {/* Fallback de compatibilidad: algunos codificados MP4 no reproducen igual en todos los navegadores */}
                   <source src="/0328.mp4" type="video/mp4" />
+                  <source src="/experiencias-isak-kelly-4.mp4" type="video/mp4" />
                   Tu navegador no soporta el video.
                 </video>
 
