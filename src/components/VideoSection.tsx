@@ -4,6 +4,10 @@ import { PlayCircle, Sparkles } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
 export function VideoSection() {
+  const isMobile =
+    typeof navigator !== 'undefined' &&
+    /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy py-20 md:py-28 px-6">
       {/* Ambiente */}
@@ -52,11 +56,12 @@ export function VideoSection() {
                 <video
                   className="absolute inset-0 h-full w-full object-cover"
                   controls
-                  autoPlay
+                  autoPlay={!isMobile}
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
+                  poster="/hero-bodyscience.png"
                   aria-label="Video introductorio del evento BodyScience 3D"
                 >
                   {/* Fallback de compatibilidad: algunos codificados MP4 no reproducen igual en todos los navegadores */}
