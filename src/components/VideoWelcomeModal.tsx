@@ -62,7 +62,7 @@ export function VideoWelcomeModal({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-gradient-to-br from-primary/45 to-navy/80 text-white shadow-[0_0_16px_rgba(27,59,138,0.35)] transition duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-gradient-to-br from-primary/45 to-navy/80 text-white shadow-[0_0_16px_rgba(27,59,138,0.35)] transition duration-300 hover:brightness-110 hover:shadow-[0_0_26px_rgba(0,183,79,0.35),0_10px_20px_-10px_rgba(0,0,0,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
             aria-label="Cerrar popup"
           >
             <X className="h-4 w-4" />
@@ -88,7 +88,7 @@ export function VideoWelcomeModal({
           <button
             type="button"
             onClick={() => setIsMuted((prev) => !prev)}
-            className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-gradient-to-r from-primary/70 via-navy/85 to-primary/70 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-[0_0_18px_rgba(27,59,138,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md transition duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:right-4 sm:top-4"
+            className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-gradient-to-r from-primary/70 via-navy/85 to-primary/70 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-[0_0_18px_rgba(27,59,138,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md transition duration-300 hover:brightness-110 hover:shadow-[0_0_28px_rgba(0,183,79,0.42),0_10px_24px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:right-4 sm:top-4"
             aria-label={isMuted ? 'Activar sonido' : 'Silenciar video'}
           >
             {isMuted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
@@ -108,7 +108,7 @@ export function VideoWelcomeModal({
           <button
             type="button"
             onClick={onPrimaryAction}
-            className="rounded-full bg-gradient-to-r from-accent via-[#18cf63] to-accent-light px-6 py-2.5 text-sm font-extrabold tracking-wide text-[#031125] shadow-[0_0_30px_rgba(0,183,79,0.5),0_14px_30px_-12px_rgba(0,183,79,0.6),inset_0_1px_0_rgba(255,255,255,0.35)] ring-1 ring-white/25 transition duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+            className="rounded-full bg-gradient-to-r from-accent via-[#18cf63] to-accent-light px-6 py-2.5 text-sm font-extrabold tracking-wide text-[#031125] shadow-[0_0_30px_rgba(0,183,79,0.5),0_10px_0_0_rgba(5,70,34,0.55),0_14px_30px_-12px_rgba(0,183,79,0.6),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-2px_0_0_rgba(5,80,38,0.45)] ring-1 ring-white/25 transition duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:brightness-110 hover:shadow-[0_0_40px_rgba(0,183,79,0.62),0_14px_0_0_rgba(5,70,34,0.48),0_22px_46px_-16px_rgba(0,183,79,0.68),inset_0_1px_0_rgba(255,255,255,0.42)] active:translate-y-0.5 active:scale-[0.985] active:shadow-[0_0_24px_rgba(0,183,79,0.4),0_4px_0_0_rgba(5,70,34,0.5),0_10px_22px_-10px_rgba(0,183,79,0.5),inset_0_2px_0_0_rgba(255,255,255,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           >
             Reservar mi lugar
           </button>

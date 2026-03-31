@@ -209,7 +209,7 @@ export function HeroSection() {
             <motion.button
               type="button"
               onClick={scrollToForm}
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-accent via-[#11ce60] to-accent-light px-8 py-4 text-lg font-extrabold tracking-[0.01em] text-[#041325] shadow-[0_14px_34px_-12px_rgba(0,183,79,0.65),0_0_30px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.35)] ring-1 ring-white/30 transition duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/65 focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-accent via-[#11ce60] to-accent-light px-8 py-4 text-lg font-extrabold tracking-[0.01em] text-[#041325] shadow-[0_14px_34px_-12px_rgba(0,183,79,0.65),0_10px_0_0_rgba(5,70,34,0.55),0_0_30px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-2px_0_0_rgba(5,80,38,0.45)] ring-1 ring-white/30 transition duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_24px_48px_-14px_rgba(0,183,79,0.72),0_14px_0_0_rgba(5,70,34,0.48),0_0_44px_rgba(0,183,79,0.45),inset_0_1px_0_0_rgba(255,255,255,0.45)] active:translate-y-0.5 active:shadow-[0_10px_22px_-10px_rgba(0,183,79,0.58),0_4px_0_0_rgba(5,70,34,0.5),0_0_24px_rgba(0,183,79,0.3),inset_0_2px_0_0_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/65 focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
               whileHover={
                 prefersReducedMotion ? {} : { scale: 1.04, y: -2 }
               }

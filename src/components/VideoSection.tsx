@@ -107,7 +107,7 @@ export function VideoSection() {
                 <button
                   type="button"
                   onClick={handleToggleSound}
-                  className="absolute right-3 top-3 z-[2] inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-gradient-to-r from-primary/70 via-navy/85 to-primary/70 px-2.5 py-1.5 text-[10px] font-semibold text-white shadow-[0_0_18px_rgba(27,59,138,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md transition duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:right-5 sm:top-5 sm:px-3 sm:py-2 sm:text-xs"
+                  className="absolute right-3 top-3 z-[2] inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-gradient-to-r from-primary/70 via-navy/85 to-primary/70 px-2.5 py-1.5 text-[10px] font-semibold text-white shadow-[0_0_18px_rgba(27,59,138,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md transition duration-300 hover:brightness-110 hover:shadow-[0_0_28px_rgba(0,183,79,0.42),0_10px_24px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:right-5 sm:top-5 sm:px-3 sm:py-2 sm:text-xs"
                   aria-label={isMuted ? 'Activar sonido del video' : 'Silenciar video'}
                 >
                   {isMuted ? (
