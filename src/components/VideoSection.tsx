@@ -9,7 +9,7 @@ export function VideoSection() {
     /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy py-20 md:py-28 px-6">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy px-4 py-16 sm:px-6 md:py-28">
       {/* Ambiente */}
       <div
         className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.11]"
@@ -33,7 +33,7 @@ export function VideoSection() {
         />
 
         <motion.div
-          className="relative mx-auto mt-2 max-w-[min(100%,56rem)]"
+          className="relative mx-auto mt-4 max-w-[min(100%,56rem)]"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -45,16 +45,16 @@ export function VideoSection() {
         >
           {/* Resplandor detrás del reproductor */}
           <div
-            className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent/20 via-primary/15 to-transparent opacity-70 blur-3xl md:-inset-10 md:rounded-[2.25rem]"
+            className="pointer-events-none absolute -inset-3 rounded-[1.25rem] bg-gradient-to-br from-accent/18 via-primary/12 to-transparent opacity-70 blur-2xl sm:-inset-6 sm:rounded-[2rem] sm:blur-3xl md:-inset-10 md:rounded-[2.25rem]"
             aria-hidden
           />
 
           <div className="relative">
             {/* Marco gradiente tipo “premium frame” */}
-            <div className="rounded-[1.75rem] bg-gradient-to-br from-white/[0.22] via-white/[0.08] to-white/[0.03] p-[1px] shadow-[0_32px_64px_-24px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06)_inset] md:rounded-[2rem]">
-              <div className="relative aspect-video w-full overflow-hidden rounded-[calc(1.75rem-1px)] bg-navy ring-1 ring-black/40 md:rounded-[calc(2rem-1px)]">
+            <div className="rounded-[1.2rem] bg-gradient-to-br from-white/[0.22] via-white/[0.08] to-white/[0.03] p-[1px] shadow-[0_24px_48px_-26px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)_inset] sm:rounded-[1.75rem] sm:shadow-[0_32px_64px_-24px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06)_inset] md:rounded-[2rem]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[calc(1.2rem-1px)] bg-black ring-1 ring-black/40 sm:aspect-video sm:rounded-[calc(1.75rem-1px)] md:rounded-[calc(2rem-1px)]">
                 <video
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-contain sm:object-cover"
                   controls
                   autoPlay={!isMobile}
                   muted
@@ -71,33 +71,33 @@ export function VideoSection() {
                 </video>
 
                 {/* Viñeta + brillo superior (legibilidad de badges) */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/5 to-navy/25" />
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-10%,rgba(255,255,255,0.12),transparent_55%)] opacity-90" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/20 sm:from-navy/50 sm:via-navy/5 sm:to-navy/25" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-10%,rgba(255,255,255,0.12),transparent_55%)] opacity-70 sm:opacity-90" />
 
                 {/* Badges */}
-                <div className="pointer-events-none absolute left-4 top-4 z-[1] flex flex-wrap items-center gap-2 sm:left-5 sm:top-5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-navy/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-text-light shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md ring-1 ring-white/10">
+                <div className="pointer-events-none absolute left-3 top-3 z-[1] flex flex-wrap items-center gap-1.5 sm:left-5 sm:top-5 sm:gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-navy/70 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-text-light shadow-[0_8px_24px_-10px_rgba(0,0,0,0.5)] backdrop-blur-md ring-1 ring-white/10 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[11px] sm:tracking-[0.14em] sm:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]">
                     <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden />
                     BodyScience 3D
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_24px_-4px_rgba(0,183,79,0.45)] backdrop-blur-sm">
-                    <PlayCircle className="h-4 w-4 text-accent" strokeWidth={2} aria-hidden />
+                  <span className="inline-flex items-center gap-1 rounded-full border border-accent/35 bg-accent/15 px-2 py-1 text-[10px] font-semibold text-white shadow-[0_0_20px_-8px_rgba(0,183,79,0.45)] backdrop-blur-sm sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs sm:shadow-[0_0_24px_-4px_rgba(0,183,79,0.45)]">
+                    <PlayCircle className="h-3.5 w-3.5 text-accent sm:h-4 sm:w-4" strokeWidth={2} aria-hidden />
                     Experiencias reales
                   </span>
                 </div>
 
                 {/* Esquinas — marco L */}
                 <div
-                  className="pointer-events-none absolute left-4 top-14 z-[1] h-10 w-10 rounded-tl-xl border-l-2 border-t-2 border-accent/45 shadow-[0_0_20px_rgba(0,183,79,0.2)] sm:left-5 sm:top-16"
+                  className="pointer-events-none absolute left-3 top-12 z-[1] h-7 w-7 rounded-tl-lg border-l-2 border-t-2 border-accent/45 shadow-[0_0_16px_rgba(0,183,79,0.2)] sm:left-5 sm:top-16 sm:h-10 sm:w-10 sm:rounded-tl-xl sm:shadow-[0_0_20px_rgba(0,183,79,0.2)]"
                   aria-hidden
                 />
                 <div
-                  className="pointer-events-none absolute bottom-4 right-4 z-[1] h-10 w-10 rounded-br-xl border-b-2 border-r-2 border-white/30 sm:bottom-5 sm:right-5"
+                  className="pointer-events-none absolute bottom-3 right-3 z-[1] h-7 w-7 rounded-br-lg border-b-2 border-r-2 border-white/30 sm:bottom-5 sm:right-5 sm:h-10 sm:w-10 sm:rounded-br-xl"
                   aria-hidden
                 />
 
                 {/* Barra inferior sutil */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy/80 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/85 to-transparent sm:h-24 sm:from-navy/80" />
               </div>
             </div>
           </div>
