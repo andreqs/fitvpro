@@ -148,13 +148,33 @@ export function HeroSection() {
             <span className="bg-gradient-to-br from-white via-text-light to-white/75 bg-clip-text text-transparent drop-shadow-[0_4px_32px_rgba(0,0,0,0.35)]">
               BodyScience{' '}
             </span>
-            <span className="relative inline-block">
+            <span className="relative inline-block [perspective:800px]">
               <span
-                className="relative z-[1] text-accent"
+                className="pointer-events-none absolute left-[0.09em] top-[0.1em] -z-[2] text-[#06351b]/80 blur-[0.5px]"
+                aria-hidden
+              >
+                3D
+              </span>
+              <span
+                className="pointer-events-none absolute left-[0.06em] top-[0.07em] -z-[1] text-accent-dark/85"
+                aria-hidden
+              >
+                3D
+              </span>
+              <span
+                className="relative z-[1] inline-block bg-gradient-to-b from-[#72ffc1] via-accent to-[#00a647] bg-clip-text text-transparent [transform:rotateX(8deg)]"
                 style={{
                   textShadow:
-                    '0 0 40px rgba(0, 183, 79, 0.45), 0 0 80px rgba(0, 183, 79, 0.2)',
+                    '0 6px 0 rgba(0,88,39,0.35), 0 0 32px rgba(0,183,79,0.45), 0 0 70px rgba(0,183,79,0.22)',
+                  WebkitTextStroke: '1px rgba(210, 255, 236, 0.36)',
                 }}
+              >
+                3D
+              </span>
+              <span
+                className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white/70 via-white/10 to-transparent bg-clip-text text-transparent"
+                aria-hidden
+                style={{ WebkitTextStroke: '0.8px rgba(255,255,255,0.22)' }}
               >
                 3D
               </span>
