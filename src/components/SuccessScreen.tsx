@@ -146,7 +146,7 @@ export function SuccessScreen({ isVisible }: SuccessScreenProps) {
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 w-full py-4 bg-accent hover:bg-accent-light text-white font-bold text-base rounded-xl glow-green transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-accent via-[#14d064] to-accent-light py-4 text-base font-extrabold tracking-[0.01em] text-[#041325] shadow-[0_16px_34px_-14px_rgba(0,183,79,0.65),0_0_30px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.35)] ring-1 ring-white/30 transition-all duration-300 hover:scale-[1.02] hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
             initial={{
               opacity: 0,
               y: 10

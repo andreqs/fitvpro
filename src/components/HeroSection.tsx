@@ -203,13 +203,13 @@ export function HeroSection() {
             className="relative"
           >
             <div
-              className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent/40 via-accent to-accent-light/80 opacity-60 blur-lg"
+              className="pointer-events-none absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-accent/45 via-primary/40 to-accent-light/90 opacity-75 blur-lg"
               aria-hidden
             />
             <motion.button
               type="button"
               onClick={scrollToForm}
-              className="group relative overflow-hidden rounded-xl bg-accent px-8 py-4 text-lg font-bold text-white shadow-[0_4px_24px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] ring-1 ring-white/25 transition-colors hover:bg-accent-light"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-accent via-[#11ce60] to-accent-light px-8 py-4 text-lg font-extrabold tracking-[0.01em] text-[#041325] shadow-[0_14px_34px_-12px_rgba(0,183,79,0.65),0_0_30px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.35)] ring-1 ring-white/30 transition duration-300 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/65 focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
               whileHover={
                 prefersReducedMotion ? {} : { scale: 1.04, y: -2 }
               }
@@ -218,7 +218,7 @@ export function HeroSection() {
             >
               <span className="relative z-[1]">Reserva tu lugar</span>
               <span
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/15 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/15 opacity-0 transition-opacity group-hover:opacity-100"
                 aria-hidden
               />
             </motion.button>

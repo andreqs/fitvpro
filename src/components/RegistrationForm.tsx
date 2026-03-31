@@ -458,7 +458,7 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-accent hover:bg-accent-light text-white font-bold text-lg rounded-xl glow-green transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3 mt-2"
+            className="mt-2 flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-accent via-[#14d064] to-accent-light py-4 text-lg font-extrabold tracking-[0.01em] text-[#041325] shadow-[0_16px_34px_-14px_rgba(0,183,79,0.65),0_0_30px_rgba(0,183,79,0.35),inset_0_1px_0_0_rgba(255,255,255,0.35)] ring-1 ring-white/30 transition-all duration-300 hover:scale-[1.02] hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-navy disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
             aria-label="Registrarme gratis en BodyScience 3D">
             
             {isSubmitting ?
