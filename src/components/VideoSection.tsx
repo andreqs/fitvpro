@@ -1,0 +1,101 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { PlayCircle, Sparkles } from 'lucide-react';
+import { SectionHeading } from './SectionHeading';
+
+export function VideoSection() {
+  return (
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy py-20 md:py-28 px-6">
+      {/* Ambiente */}
+      <div
+        className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.11]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/3 h-[min(55vh,420px)] w-[min(95vw,720px)] -translate-x-1/2 rounded-full bg-primary/[0.14] blur-[100px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-24 right-0 h-72 w-72 rounded-full bg-accent/[0.09] blur-[90px]"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto max-w-4xl">
+        <SectionHeading
+          eyebrow="Video"
+          titleBefore="Conoce de qué trata "
+          titleHighlight="este evento"
+          subtitle="Una mirada rápida al enfoque y al tono del evento antes de profundizar en cada tema."
+        />
+
+        <motion.div
+          className="relative mx-auto mt-2 max-w-[min(100%,56rem)]"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{
+            duration: 0.75,
+            delay: 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {/* Resplandor detrás del reproductor */}
+          <div
+            className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent/20 via-primary/15 to-transparent opacity-70 blur-3xl md:-inset-10 md:rounded-[2.25rem]"
+            aria-hidden
+          />
+
+          <div className="relative">
+            {/* Marco gradiente tipo “premium frame” */}
+            <div className="rounded-[1.75rem] bg-gradient-to-br from-white/[0.22] via-white/[0.08] to-white/[0.03] p-[1px] shadow-[0_32px_64px_-24px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06)_inset] md:rounded-[2rem]">
+              <div className="relative aspect-video w-full overflow-hidden rounded-[calc(1.75rem-1px)] bg-navy ring-1 ring-black/40 md:rounded-[calc(2rem-1px)]">
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Video introductorio del evento BodyScience 3D"
+                >
+                  <source src="/0328.mp4" type="video/mp4" />
+                  Tu navegador no soporta el video.
+                </video>
+
+                {/* Viñeta + brillo superior (legibilidad de badges) */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/5 to-navy/25" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-10%,rgba(255,255,255,0.12),transparent_55%)] opacity-90" />
+
+                {/* Badges */}
+                <div className="pointer-events-none absolute left-4 top-4 z-[1] flex flex-wrap items-center gap-2 sm:left-5 sm:top-5">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-navy/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-text-light shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md ring-1 ring-white/10">
+                    <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden />
+                    BodyScience 3D
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_24px_-4px_rgba(0,183,79,0.45)] backdrop-blur-sm">
+                    <PlayCircle className="h-4 w-4 text-accent" strokeWidth={2} aria-hidden />
+                    Experiencias reales
+                  </span>
+                </div>
+
+                {/* Esquinas — marco L */}
+                <div
+                  className="pointer-events-none absolute left-4 top-14 z-[1] h-10 w-10 rounded-tl-xl border-l-2 border-t-2 border-accent/45 shadow-[0_0_20px_rgba(0,183,79,0.2)] sm:left-5 sm:top-16"
+                  aria-hidden
+                />
+                <div
+                  className="pointer-events-none absolute bottom-4 right-4 z-[1] h-10 w-10 rounded-br-xl border-b-2 border-r-2 border-white/30 sm:bottom-5 sm:right-5"
+                  aria-hidden
+                />
+
+                {/* Barra inferior sutil */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy/80 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

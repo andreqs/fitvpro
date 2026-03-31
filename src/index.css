@@ -1,0 +1,101 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+:root {
+  --color-primary: #1B3B8A;
+  --color-navy: #0A1628;
+  --color-navy-light: #0F2035;
+  --color-accent: #00B74F;
+  --color-accent-glow: rgba(0, 183, 79, 0.3);
+  --color-surface-light: #F0F4FA;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #E2E8F0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-navy);
+  color: #ffffff;
+}
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4fa0;
+}
+/* Green glow effect for CTA buttons */
+.glow-green {
+  box-shadow: 0 0 20px var(--color-accent-glow), 0 0 60px rgba(0, 183, 79, 0.1);
+}
+/* Geometric grid pattern */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(27, 59, 138, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 59, 138, 0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+/* Registro / secciones — malla en capas + halos (mismo criterio que EventInfo) */
+.grid-pattern-premium {
+  --gp-line: rgba(27, 59, 138, 0.2);
+  --gp-line-fine: rgba(255, 255, 255, 0.035);
+  background-color: transparent;
+  background-image:
+    radial-gradient(ellipse 110% 65% at 50% -25%, rgba(27, 59, 138, 0.35), transparent 58%),
+    radial-gradient(ellipse 55% 45% at 95% 95%, rgba(0, 183, 79, 0.11), transparent 52%),
+    radial-gradient(ellipse 40% 35% at 8% 75%, rgba(42, 79, 160, 0.12), transparent 50%),
+    linear-gradient(var(--gp-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gp-line) 1px, transparent 1px),
+    linear-gradient(var(--gp-line-fine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gp-line-fine) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    56px 56px,
+    56px 56px,
+    14px 14px,
+    14px 14px;
+  background-position:
+    center top,
+    center center,
+    center center,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  -webkit-mask-image: radial-gradient(
+    ellipse 92% 88% at 50% 48%,
+    #000 0%,
+    #000 42%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 92% 88% at 50% 48%,
+    #000 0%,
+    #000 42%,
+    transparent 78%
+  );
+}
+/* Focus styles */
+input:focus, textarea:focus {
+  outline: none;
+}
