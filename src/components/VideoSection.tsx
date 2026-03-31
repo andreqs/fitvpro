@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { PlayCircle, Sparkles } from 'lucide-react';
+import { PlayCircle, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
 export function VideoSection() {
-  const isMobile =
-    typeof navigator !== 'undefined' &&
-    /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => {});
+          return;
+        }
+        video.pause();
+      },
+      { threshold: 0.55 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleToggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const nextMuted = !isMuted;
+    video.muted = nextMuted;
+    setIsMuted(nextMuted);
+
+    if (!nextMuted) {
+      void video.play().catch(() => {});
+    }
+  };
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy px-4 py-16 sm:px-6 md:py-28">
@@ -54,9 +88,10 @@ export function VideoSection() {
             <div className="rounded-[1.2rem] bg-gradient-to-br from-white/[0.22] via-white/[0.08] to-white/[0.03] p-[1px] shadow-[0_24px_48px_-26px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)_inset] sm:rounded-[1.75rem] sm:shadow-[0_32px_64px_-24px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06)_inset] md:rounded-[2rem]">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[calc(1.2rem-1px)] bg-black ring-1 ring-black/40 sm:aspect-video sm:rounded-[calc(1.75rem-1px)] md:rounded-[calc(2rem-1px)]">
                 <video
+                  ref={videoRef}
                   className="absolute inset-0 h-full w-full object-contain sm:object-cover"
                   controls
-                  autoPlay={!isMobile}
+                  autoPlay
                   muted
                   loop
                   playsInline
@@ -69,6 +104,19 @@ export function VideoSection() {
                   <source src="/experiencias-isak-kelly-4.mp4" type="video/mp4" />
                   Tu navegador no soporta el video.
                 </video>
+                <button
+                  type="button"
+                  onClick={handleToggleSound}
+                  className="absolute right-3 top-3 z-[2] inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/45 px-2.5 py-1.5 text-[10px] font-semibold text-white backdrop-blur-md transition hover:bg-black/60 sm:right-5 sm:top-5 sm:px-3 sm:py-2 sm:text-xs"
+                  aria-label={isMuted ? 'Activar sonido del video' : 'Silenciar video'}
+                >
+                  {isMuted ? (
+                    <VolumeX className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+                  ) : (
+                    <Volume2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+                  )}
+                  {isMuted ? 'Activar sonido' : 'Sonido activo'}
+                </button>
 
                 {/* Viñeta + brillo superior (legibilidad de badges) */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/20 sm:from-navy/50 sm:via-navy/5 sm:to-navy/25" />
