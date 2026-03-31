@@ -1,12 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { VideoSection } from './components/VideoSection';
 import { ValueBullets } from './components/ValueBullets';
 import { EventInfo } from './components/EventInfo';
 import { RegistrationForm } from './components/RegistrationForm';
 import { SuccessScreen } from './components/SuccessScreen';
+import { VideoWelcomeModal } from './components/VideoWelcomeModal';
 export function App() {
   const [isRegistered, setIsRegistered] = useState(false);
+  const [showWelcomeVideo, setShowWelcomeVideo] = useState(false);
+
+  useEffect(() => {
+    const storageKey = 'fitvpro-video-modal-last-seen';
+    const today = new Date().toISOString().slice(0, 10);
+    const lastSeen = window.localStorage.getItem(storageKey);
+
+    if (lastSeen !== today) {
+      setShowWelcomeVideo(true);
+    }
+  }, []);
+
+  const closeWelcomeVideo = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    window.localStorage.setItem('fitvpro-video-modal-last-seen', today);
+    setShowWelcomeVideo(false);
+  };
+
+  const handleWelcomePrimaryAction = () => {
+    closeWelcomeVideo();
+    const registroSection = document.getElementById('registro');
+    registroSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const handleRegistration = () => {
     setIsRegistered(true);
     window.scrollTo({
@@ -16,6 +41,11 @@ export function App() {
   };
   return (
     <div className="w-full min-h-screen bg-navy">
+      <VideoWelcomeModal
+        isOpen={showWelcomeVideo}
+        onClose={closeWelcomeVideo}
+        onPrimaryAction={handleWelcomePrimaryAction}
+      />
       <HeroSection />
       <VideoSection />
       <ValueBullets />

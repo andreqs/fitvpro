@@ -16,6 +16,29 @@ const NIVEL_OPCIONES = [
   { value: 'avanzado', label: 'Avanzado', shortLabel: 'Avanzado' },
 ] as const;
 
+const CIUDADES_COLOMBIA = [
+  'Bogotá',
+  'Medellín',
+  'Cali',
+  'Barranquilla',
+  'Cartagena',
+  'Bucaramanga',
+  'Cúcuta',
+  'Pereira',
+  'Santa Marta',
+  'Ibagué',
+  'Manizales',
+  'Villavicencio',
+  'Pasto',
+  'Montería',
+  'Neiva',
+  'Armenia',
+  'Sincelejo',
+  'Valledupar',
+  'Popayán',
+  'Tunja',
+] as const;
+
 type NivelValor = (typeof NIVEL_OPCIONES)[number]['value'];
 
 interface RegFormState {
@@ -78,7 +101,7 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   };
   const handleChange =
     (field: keyof RegFormState) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const value =
         field === 'nivelExperiencia'
           ? (e.target.value as NivelValor)
@@ -296,7 +319,6 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
             <input
               id="whatsapp"
               type="tel"
-              placeholder="+52 123 456 7890"
               value={formData.whatsapp}
               onChange={handleChange('whatsapp')}
               className={`${inputBaseClass} ${errors.whatsapp ? 'border-red-400/70 ring-1 ring-red-400/30' : 'border-primary/30'}`}
@@ -322,16 +344,31 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
             >
               Ciudad
             </label>
-            <input
+            <div className="relative">
+            <select
               id="ciudad"
-              type="text"
-              placeholder="Ej: Ciudad de México, Guadalajara..."
               value={formData.ciudad}
               onChange={handleChange('ciudad')}
-              className={`${inputBaseClass} ${errors.ciudad ? 'border-red-400/70 ring-1 ring-red-400/30' : 'border-primary/30'}`}
+              className={`${inputBaseClass} appearance-none pr-11 ${errors.ciudad ? 'border-red-400/70 ring-1 ring-red-400/30' : 'border-primary/30'}`}
               aria-invalid={!!errors.ciudad}
               aria-describedby={errors.ciudad ? 'ciudad-error' : undefined}
-            />
+            >
+              <option value="" disabled>
+                Selecciona tu ciudad
+              </option>
+              {CIUDADES_COLOMBIA.map((ciudad) => (
+                <option key={ciudad} value={ciudad}>
+                  {ciudad}
+                </option>
+              ))}
+            </select>
+            <span
+              className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-text-light/80"
+              aria-hidden
+            >
+              ▼
+            </span>
+            </div>
             {errors.ciudad && (
               <p
                 id="ciudad-error"
