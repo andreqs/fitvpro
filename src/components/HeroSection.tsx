@@ -40,7 +40,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/75 to-[#0F2035]" />
 
       {/* Grid + halos */}
-      <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+      <div className="absolute inset-0 left-0 top-0 grid-pattern opacity-20" aria-hidden />
       <div
         className="pointer-events-none absolute left-1/2 top-[28%] h-[min(70vw,520px)] w-[min(95vw,720px)] -translate-x-1/2 rounded-full bg-primary/20 blur-[110px]"
         aria-hidden
@@ -214,9 +214,39 @@ export function HeroSection() {
             la composición corporal y fortalecer tu criterio en contextos reales.
           </motion.p>
 
+          {/* Video de impacto antes del CTA */}
+          <motion.div
+            className="mb-8 w-full max-w-2xl"
+            custom={5}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+          >
+            <div className="rounded-2xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 p-[1px] shadow-[0_20px_60px_-28px_rgba(0,0,0,0.7),0_0_38px_rgba(0,183,79,0.25)]">
+              <div className="relative aspect-video overflow-hidden rounded-[calc(1rem-1px)] bg-black ring-1 ring-white/10">
+                <video
+                  className="h-full w-full object-cover"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="/hero-bodyscience.png"
+                  aria-label="Video de presentacion del evento BodyScience 3D"
+                >
+                  <source src="/0328.mp4" type="video/mp4" />
+                  <source src="/experiencias-isak-kelly-4.mp4" type="video/mp4" />
+                  Tu navegador no soporta el video.
+                </video>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15" />
+              </div>
+            </div>
+          </motion.div>
+
           {/* CTA */}
           <motion.div
-            custom={5}
+            custom={6}
             initial="hidden"
             animate="visible"
             variants={fadeUp}

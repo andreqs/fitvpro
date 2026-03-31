@@ -67,9 +67,9 @@ function ValueCard({ icon, text, imageSrc, imageAlt, index }: ValueCardProps) {
 }
 export function ValueBullets() {
   return (
-    <section className="w-full bg-gradient-to-b from-navy via-navy to-navy-light py-20 md:py-28 px-6 relative overflow-hidden">
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
+    <section className="relative -mt-px w-full overflow-hidden bg-gradient-to-b from-[#0F2035] via-navy-light to-navy py-20 px-6 md:py-28">
+      {/* Grid pattern (alineado al Hero para una linea visual uniforme) */}
+      <div className="absolute inset-0 left-0 top-0 grid-pattern opacity-20" aria-hidden />
       <div className="relative z-10 max-w-4xl mx-auto">
         <SectionHeading
           eyebrow="Contenido"
