@@ -13,6 +13,7 @@ export function SuccessScreen({ isVisible }: SuccessScreenProps) {
     };
 
     if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Lead');
       win.fbq('track', 'CompleteRegistration');
     }
   }, [isVisible]);
