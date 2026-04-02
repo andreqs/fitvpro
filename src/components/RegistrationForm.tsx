@@ -73,27 +73,30 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   const [submitError, setSubmitError] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const trackMetaLead = () => {
+  const fireMetaEvent = (eventName: string) => {
     const win = window as typeof window & {
       fbq?: (...args: unknown[]) => void;
+      _fbq?: { push?: (...args: unknown[]) => void; queue?: unknown[] };
     };
 
     if (typeof win.fbq === 'function') {
-      win.fbq('track', 'Lead');
-      // Fallback explícito por pixel ID para asegurar envío en cuentas con múltiples píxeles.
-      win.fbq('trackSingle', '2028720024406086', 'Lead');
+      win.fbq('track', eventName);
+      win.fbq('trackSingle', '2028720024406086', eventName);
+      return;
+    }
+
+    if (win._fbq && Array.isArray(win._fbq.queue)) {
+      win._fbq.queue.push(['track', eventName]);
+      win._fbq.queue.push(['trackSingle', '2028720024406086', eventName]);
     }
   };
 
-  const trackMetaCompleteRegistration = () => {
-    const win = window as typeof window & {
-      fbq?: (...args: unknown[]) => void;
-    };
+  const trackMetaLead = () => {
+    fireMetaEvent('Lead');
+  };
 
-    if (typeof win.fbq === 'function') {
-      win.fbq('track', 'CompleteRegistration');
-      win.fbq('trackSingle', '2028720024406086', 'CompleteRegistration');
-    }
+  const trackMetaCompleteRegistration = () => {
+    fireMetaEvent('CompleteRegistration');
   };
   const validate = (): boolean => {
     const newErrors: FormErrors = {};

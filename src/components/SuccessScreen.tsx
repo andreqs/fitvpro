@@ -5,19 +5,29 @@ interface SuccessScreenProps {
   isVisible: boolean;
 }
 export function SuccessScreen({ isVisible }: SuccessScreenProps) {
+  const fireMetaEvent = (eventName: string) => {
+    const win = window as typeof window & {
+      fbq?: (...args: unknown[]) => void;
+      _fbq?: { push?: (...args: unknown[]) => void; queue?: unknown[] };
+    };
+
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', eventName);
+      win.fbq('trackSingle', '2028720024406086', eventName);
+      return;
+    }
+
+    if (win._fbq && Array.isArray(win._fbq.queue)) {
+      win._fbq.queue.push(['track', eventName]);
+      win._fbq.queue.push(['trackSingle', '2028720024406086', eventName]);
+    }
+  };
+
   const whatsappUrl = 'https://chat.whatsapp.com/C3Pcc0JRMx0HZnuk2OlHze?mode=gi_t';
 
   const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-
-    const win = window as typeof window & {
-      fbq?: (...args: unknown[]) => void;
-    };
-
-    if (typeof win.fbq === 'function') {
-      win.fbq('track', 'Contact');
-      win.fbq('trackSingle', '2028720024406086', 'Contact');
-    }
+    fireMetaEvent('Contact');
 
     // Pequeño delay para evitar perder el evento al abrir una nueva pestaña inmediatamente.
     window.setTimeout(() => {
