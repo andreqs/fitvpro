@@ -75,12 +75,15 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
 
   const trackMetaRegistrationEvents = () => {
     const win = window as typeof window & {
-      fbq?: (command: string, eventName: string, params?: Record<string, unknown>) => void;
+      fbq?: (...args: unknown[]) => void;
     };
 
     if (typeof win.fbq === 'function') {
       win.fbq('track', 'Lead');
       win.fbq('track', 'CompleteRegistration');
+      // Fallback explícito por pixel ID para asegurar envío en cuentas con múltiples píxeles.
+      win.fbq('trackSingle', '2028720024406086', 'Lead');
+      win.fbq('trackSingle', '2028720024406086', 'CompleteRegistration');
     }
   };
   const validate = (): boolean => {
