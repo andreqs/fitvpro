@@ -72,6 +72,17 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitError, setSubmitError] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const trackMetaRegistrationEvents = () => {
+    const win = window as typeof window & {
+      fbq?: (command: string, eventName: string, params?: Record<string, unknown>) => void;
+    };
+
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Lead');
+      win.fbq('track', 'CompleteRegistration');
+    }
+  };
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
     if (!formData.nombre.trim()) {
@@ -180,6 +191,8 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
           throw error;
         }
       }
+
+      trackMetaRegistrationEvents();
 
       setFormData({
         nombre: '',

@@ -1,23 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircleIcon, MessageCircleIcon } from 'lucide-react';
 interface SuccessScreenProps {
   isVisible: boolean;
 }
 export function SuccessScreen({ isVisible }: SuccessScreenProps) {
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const win = window as typeof window & {
-      fbq?: (command: string, eventName: string, params?: Record<string, unknown>) => void;
-    };
-
-    if (typeof win.fbq === 'function') {
-      win.fbq('track', 'Lead');
-      win.fbq('track', 'CompleteRegistration');
-    }
-  }, [isVisible]);
-
   const handleWhatsAppClick = () => {
     const win = window as typeof window & {
       fbq?: (command: string, eventName: string, params?: Record<string, unknown>) => void;
