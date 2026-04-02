@@ -73,16 +73,25 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   const [submitError, setSubmitError] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const trackMetaRegistrationEvents = () => {
+  const trackMetaLead = () => {
     const win = window as typeof window & {
       fbq?: (...args: unknown[]) => void;
     };
 
     if (typeof win.fbq === 'function') {
       win.fbq('track', 'Lead');
-      win.fbq('track', 'CompleteRegistration');
       // Fallback explícito por pixel ID para asegurar envío en cuentas con múltiples píxeles.
       win.fbq('trackSingle', '2028720024406086', 'Lead');
+    }
+  };
+
+  const trackMetaCompleteRegistration = () => {
+    const win = window as typeof window & {
+      fbq?: (...args: unknown[]) => void;
+    };
+
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'CompleteRegistration');
       win.fbq('trackSingle', '2028720024406086', 'CompleteRegistration');
     }
   };
@@ -134,6 +143,7 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    trackMetaLead();
     if (!googleScriptUrl) {
       setSubmitError(
         'Falta configurar el formulario. Agrega VITE_GOOGLE_SCRIPT_URL en tu archivo .env.'
@@ -195,7 +205,7 @@ export function RegistrationForm({ onSubmit }: RegistrationFormProps) {
         }
       }
 
-      trackMetaRegistrationEvents();
+      trackMetaCompleteRegistration();
 
       setFormData({
         nombre: '',
